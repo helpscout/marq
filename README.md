@@ -1,4 +1,4 @@
-# h2jk
+# H2JK
 
 #### HubSpot to Jekyll
 _Magical post machine_

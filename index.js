@@ -73,7 +73,7 @@ posts.forEach(p => {
   const fileContent = p.fileContent;
 
   fs.writeFileSync(`./posts/${fileName}`, fileContent);
-  console.log(`./posts/${fileName} created with h2jk!`);
+  console.log(`./posts/${fileName} created with H2JK!`);
 });
 console.log('');
 console.log('✨ H2JK MAGIC MACHINE! ✨');
