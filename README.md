@@ -22,3 +22,8 @@ Run:
 ```
 node index.js
 ```
+
+
+## API Stuff
+
+Check out **[HubSpot's API docs](https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts)**
