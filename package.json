@@ -1,0 +1,15 @@
+{
+  "name": "h2jk",
+  "version": "0.0.1",
+  "description": "Hubspot to Jekyll",
+  "main": "index.js",
+  "dependencies": {
+    "lodash.template": "4.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ItsJonQ <itsjonq@gmail.com> (http://jonquach.com)",
+  "license": "MIT"
+}
