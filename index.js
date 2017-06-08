@@ -66,7 +66,7 @@ const h2jk = () => {
 const posts = h2jk();
 
 console.log('');
-console.log('Ready for some 🌈magic🌈?');
+console.log('Ready for some 🌈 magic 🌈?');
 console.log('');
 posts.forEach(p => {
   const fileName = p.props.fileName;
@@ -76,7 +76,7 @@ posts.forEach(p => {
   console.log(`./posts/${fileName} created with h2jk!`);
 });
 console.log('');
-console.log('✨H2JK MAGIC MACHINE!✨');
+console.log('✨ H2JK MAGIC MACHINE! ✨');
 console.log('');
 
 module.export = h2jk;
