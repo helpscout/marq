@@ -1,6 +1,7 @@
 # h2jk
 
-HubSpot -> Jekyll blog post converter machine!
+#### HubSpot to Jekyll
+_Magical post converter machine_
 
 ![Magic](https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif)
 
