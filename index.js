@@ -1,7 +1,8 @@
 const fs = require('fs');
-const template = require('lodash.template')
-const data = require('./data/blog-posts.json')
-const postTemplate = require('./template')
+const mkdir = require('mkdirp');
+const template = require('lodash.template');
+const data = require('./data/blog-posts.json');
+const postTemplate = require('./template');
 
 
 const slugify = (string) => {
@@ -14,12 +15,12 @@ const slugify = (string) => {
 }
 
 const getDate = (date) => {
-  return new Date(date).toISOString().substring(0, 10)
+  return new Date(date).toISOString().substring(0, 10);
 }
 
 const getFileName = (date, slug) => {
-  const file = slug.replace('blog/', '')
-  return `${date}-${file}.md`
+  const file = slug.replace('blog/', '');
+  return `${date}-${file}.md`;
 }
 
 const mapDataToProps = (data) => {
@@ -36,15 +37,15 @@ const mapDataToProps = (data) => {
     content: data.post_body,
     slug: data.slug,
     fileName: getFileName(getDate(data.publish_date), data.slug),
-  }
+  };
 }
 
 const getData = () => {
-  return data.objects
+  return data.objects;
 }
 
 const generatePost = (data) => {
-  return template(postTemplate)(data)
+  return template(postTemplate)(data);
 }
 
 const generatePosts = (data) => {
@@ -53,30 +54,31 @@ const generatePosts = (data) => {
     return {
       props: props,
       fileContent: generatePost(props),
-    }
-  })
+    };
+  });
 };
 
 const h2jk = () => {
-  return generatePosts(getData())
+  mkdir('./posts');
+  return generatePosts(getData());
 }
 
-const posts = h2jk()
+const posts = h2jk();
 
-console.log('')
-console.log('Ready for some magic, Nick?')
-console.log('**squeee**')
-console.log('')
+console.log('');
+console.log('Ready for some magic, Nick?');
+console.log('**squeee**');
+console.log('');
 posts.forEach(p => {
-  const fileName = p.props.fileName
-  const fileContent = p.fileContent
+  const fileName = p.props.fileName;
+  const fileContent = p.fileContent;
 
-  fs.writeFileSync(`./posts/${fileName}`, fileContent)
-  console.log(`./posts/${fileName} created with h2jk!`)
-})
-console.log('')
-console.log('OH BOY')
-console.log('')
+  fs.writeFileSync(`./posts/${fileName}`, fileContent);
+  console.log(`./posts/${fileName} created with h2jk!`);
+});
+console.log('');
+console.log('OH BOY');
+console.log('');
 
-module.export = h2jk
-module.export.default = h2jk
+module.export = h2jk;
+module.export.default = h2jk;
