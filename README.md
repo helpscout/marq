@@ -1,7 +1,7 @@
 # h2jk
 
 #### HubSpot to Jekyll
-_Magical post converter machine_
+_Magical post machine_
 
 ![Magic](https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif)
 
