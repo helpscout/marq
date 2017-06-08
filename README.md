@@ -5,7 +5,9 @@ _Magical post converter machine_
 
 ![Magic](https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif)
 
-Note: Currently setup to do parsing on a CURL return. Not actually hitting HubSpot's API, YET!
+Note: Currently only setup to do parsing on a static CURL return file.
+
+Not actually hitting HubSpot's API, **YET**!
 
 
 ## Get Started
