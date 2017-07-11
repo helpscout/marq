@@ -2,7 +2,7 @@ const fs = require('fs');
 const mkdir = require('mkdirp');
 const template = require('lodash.template');
 const data = require('./data/blog-posts.json');
-const postTemplate = require('./template');
+const postTemplate = require('./src/template/post');
 
 
 const slugify = (string) => {
