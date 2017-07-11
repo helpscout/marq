@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run pretty && babel src --out-dir lib",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "dev": "npm run test:watch",
     "test:unit": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
     "test:coverage": "nyc --reporter=html --reporter=text mocha test/setup.mocha.js --recursive src/**/*.spec.js --reporter=dot",
     "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
