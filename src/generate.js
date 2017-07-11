@@ -7,15 +7,22 @@ import { isValidPost } from './utils';
 const defaultDir = './posts';
 
 export const savePost = (dir = defaultDir) => postData => {
-  if (!isValidPost(postData)) return false;
+  if (!postData) return false;
 
   const { content, fileName } = postData;
+  const filePath = `${dir}/${fileName}`;
 
-  fs.writeFileSync(`${dir}/${fileName}`, content);
+  return new Promise((resolve, reject) => {
+    mkdir(dir, (err) => {
+      if (err && reject) return reject(err);
+      fs.writeFileSync(filePath, content);
+      resolve(filePath);
+    });
+  });
 };
 
 export const generate = (dir = defaultDir) => (posts = []) => {
-  mkdir(dir);
+  const saveQueue = [];
 
   posts.forEach(post => {
     const props = mapDataToProps(post);
@@ -27,8 +34,10 @@ export const generate = (dir = defaultDir) => (posts = []) => {
       content,
     };
 
-    savePost(dir)(postData);
+    saveQueue.push(savePost(dir)(postData));
   });
+
+  return Promise.all(saveQueue);
 };
 
 export default generate;
