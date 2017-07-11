@@ -1,4 +1,4 @@
-# H2JK [![Build Status](https://travis-ci.com/helpscout/h2jk.svg?token=mizbXyxLU95YeKzixKT2&branch=master)](https://travis-ci.com/helpscout/h2jk)
+# H2JK [![Build Status](https://travis-ci.org/helpscout/h2jk.svg?branch=master)](https://travis-ci.org/helpscout/h2jk)
 
 #### HubSpot to Jekyll
 _Magical post machine_
