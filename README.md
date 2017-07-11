@@ -1,4 +1,4 @@
-# H2JK [![Build Status](https://travis-ci.org/helpscout/h2jk.svg?branch=master)](https://travis-ci.org/helpscout/h2jk)
+# H2JK [![Build Status](https://travis-ci.org/helpscout/h2jk.svg?branch=master)](https://travis-ci.org/helpscout/h2jk) [![Coverage Status](https://coveralls.io/repos/github/helpscout/h2jk/badge.svg?branch=master)](https://coveralls.io/github/helpscout/h2jk?branch=master)
 
 #### HubSpot to Jekyll
 _Magical post machine_
