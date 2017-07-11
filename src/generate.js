@@ -13,7 +13,7 @@ export const savePost = (dir = defaultDir) => postData => {
   const filePath = `${dir}/${fileName}`;
 
   return new Promise((resolve, reject) => {
-    mkdir(dir, (err) => {
+    mkdir(dir, err => {
       if (err && reject) return reject(err);
       fs.writeFileSync(filePath, content);
       resolve(filePath);

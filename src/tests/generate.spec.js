@@ -7,7 +7,7 @@ const posts = [data];
 const dir = './test-dir';
 
 describe('generate', () => {
-  it('should output .md file from a post', (done) => {
+  it('should output .md file from a post', done => {
     generate(dir)(posts)
       .then(() => {
         const postProps = mapDataToProps(posts[0]);
@@ -22,7 +22,7 @@ describe('generate', () => {
 
         done();
       })
-      .catch((err) => {
+      .catch(err => {
         done(err);
       });
   });
