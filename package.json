@@ -4,15 +4,16 @@
   "description": "HubSpot to Jekyll",
   "main": "index.js",
   "scripts": {
-    "build": "npm run pretty && babel src --out-dir lib",
+    "build": "npm rum clean && npm run pretty && babel src --out-dir lib",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "clean": "rimraf coverage lib test-dir",
     "dev": "npm run test:watch",
-    "test:unit": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
-    "test:coverage": "nyc --reporter=html --reporter=text mocha test/setup.mocha.js --recursive src/**/*.spec.js --reporter=dot",
+    "test:coverage": "nyc --reporter=html --reporter=text -- npm run test --reporter dot",
     "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
+    "prepare": "npm run clean && npm run test && npm run build",
     "start": "npm run dev",
-    "test": "npm run pretty && npm run test:unit",
-    "test:watch": "npm run pretty && mocha test/setup.mocha.js --recursive src/**/*.spec.js --watch --reporter dot"
+    "test": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
+    "test:watch": "npm run pretty && npm run test -- --watch --reporter dot"
   },
   "dependencies": {
     "lodash": "4.17.4",
@@ -27,7 +28,8 @@
     "mocha": "3.4.2",
     "mocha-lcov-reporter": "1.3.0",
     "nyc": "10.3.2",
-    "prettier": "1.5.2"
+    "prettier": "1.5.2",
+    "rimraf": "2.6.1"
   },
   "author": "ItsJonQ <itsjonq@gmail.com> (http://jonquach.com)",
   "license": "MIT"
