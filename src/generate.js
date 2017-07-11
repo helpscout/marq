@@ -1,29 +1,34 @@
-import mkdir from 'mkdir';
+import fs from 'fs';
+import mkdir from 'mkdirp';
 import generatePost from './generatePost';
 import mapDataToProps from './mapDataToProps';
+import { isValidPost } from './utils';
 
 const defaultDir = './posts';
 
-export const writeFiles = (dir = defaultDir) => (posts = []) => {
-  posts.forEach(p => {
-    const fileName = p.props.fileName;
-    const fileContent = p.fileContent;
+export const savePost = (dir = defaultDir) => postData => {
+  if (!isValidPost(postData)) return false;
 
-    fs.writeFileSync(`${dir}/${fileName}`, fileContent);
-  });
+  const { content, fileName } = postData;
+
+  fs.writeFileSync(`${dir}/${fileName}`, content);
 };
 
-const generate = (dir = defaultDir) => (posts = []) => {
-  const postFiles = posts.map(d => {
-    const props = mapDataToProps(d);
-    const fileContent = generate(posts);
-    return {
-      fileContent,
-      props,
-    };
-  });
+export const generate = (dir = defaultDir) => (posts = []) => {
+  mkdir(dir);
 
-  writeFiles(dir)(postFiles);
+  posts.forEach(post => {
+    const props = mapDataToProps(post);
+    if (!isValidPost(props)) return;
+
+    const content = generatePost(props);
+    const postData = {
+      fileName: props.fileName,
+      content,
+    };
+
+    savePost(dir)(postData);
+  });
 };
 
 export default generate;

@@ -1,4 +1,4 @@
-import { isNumber, isString } from 'lodash';
+import { has, isObject, isNumber, isString } from 'lodash';
 
 export const getDate = date => {
   if (!isNumber(date)) return false;
@@ -11,6 +11,17 @@ export const getFileName = (date, slug) => {
 
   const file = slugify(slug.replace('blog/', ''));
   return `${date}-${file}.md`;
+};
+
+export const isValidPost = (post = {}) => {
+  return (
+    isObject(post) &&
+    has(post, 'front_matter') &&
+    isString(post.title) &&
+    isString(post.date) &&
+    isString(post.slug) &&
+    isString(post.fileName)
+  );
 };
 
 export const sanitize = text => {

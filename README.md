@@ -18,13 +18,18 @@ Pull this down, then:
 npm install
 ```
 
-## Fire it up!
+## Start developing!
 
 Run:
 
 ```
-node index.js
+npm start
 ```
+
+
+## Using H2JK
+
+The module is still under development. The main file will be under `./src/index.js`.
 
 
 ## API Stuff

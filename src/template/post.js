@@ -8,4 +8,4 @@ slug: "<%= slug %>"
 <%= content %>
 `;
 
-module.exports = template;
+export default template;
