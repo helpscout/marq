@@ -1,4 +1,4 @@
-import { getDate, getFileName, slugify } from '../utils';
+import { getDate, getFileName, sanitize, slugify } from '../utils';
 
 describe('utils', () => {
   describe('getDate', () => {
@@ -26,6 +26,18 @@ describe('utils', () => {
       const fileName = getFileName('2011-01-01', '/blog/hello/');
 
       expect(fileName).to.equal('2011-01-01-hello.md');
+    });
+  });
+
+  describe('sanitize', () => {
+    it('should transform argument to string', () => {
+      expect(sanitize(123)).to.be.a('string');
+      expect(sanitize([0])).to.be.a('string');
+    });
+
+    it('should escape double quote (")', () => {
+      const text = 'Hello "there"';
+      expect(sanitize(text)).to.equal('Hello "there"');
     });
   });
 

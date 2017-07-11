@@ -13,6 +13,10 @@ export const getFileName = (date, slug) => {
   return `${date}-${file}.md`;
 };
 
+export const sanitize = text => {
+  return text.toString().replace(/\"/g, '"');
+};
+
 export const slugify = slug => {
   return slug
     .toString()
