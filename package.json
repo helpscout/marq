@@ -10,6 +10,7 @@
     "test:unit": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
     "test:coverage": "nyc --reporter=html --reporter=text mocha test/setup.mocha.js --recursive src/**/*.spec.js --reporter=dot",
     "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
+    "start": "npm run dev",
     "test": "npm run pretty && npm run test:unit",
     "test:watch": "npm run pretty && mocha test/setup.mocha.js --recursive src/**/*.spec.js --watch --reporter dot"
   },
