@@ -1,6 +1,6 @@
 # Postdown [![Build Status](https://travis-ci.org/helpscout/postdown.svg?branch=master)](https://travis-ci.org/helpscout/postdown) [![Coverage Status](https://coveralls.io/repos/github/helpscout/postdown/badge.svg?branch=master)](https://coveralls.io/github/helpscout/postdown?branch=master)
 
-#### HubSpot to Jekyll
+#### Generate markdown posts from JSON API responses
 _Magical post machine_
 
 ![Magic](https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif)
