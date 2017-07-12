@@ -4,6 +4,7 @@ logs
 posts/
 test/
 test-dir/
+test-dir-empty/
 
 node_modules
 coverage

@@ -1,9 +1,11 @@
-import { getDate, getFileName, sanitize, slugify } from './utils';
+import { getDate, getFileName, isValidPost, sanitize, slugify } from './utils';
 
 // Data comes from Hubspot's V2 Blog API
 // https://developers.hubspot.com/docs/methods/blogv2/get_blogs_blog_id
 
 const mapDataToProps = data => {
+  if (!isValidPost(data)) return false;
+
   const publishDate = getDate(data.publish_date);
   const slug = slugify(data.slug);
   const title = data.html_title;

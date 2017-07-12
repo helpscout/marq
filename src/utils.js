@@ -14,13 +14,15 @@ export const getFileName = (date, slug) => {
 };
 
 export const isValidPost = (post = {}) => {
+  const { html_title, meta_description, post_body, publish_date, slug } = post;
+
   return (
     isObject(post) &&
-    has(post, 'front_matter') &&
-    isString(post.title) &&
-    isString(post.date) &&
-    isString(post.slug) &&
-    isString(post.fileName)
+    isString(html_title) &&
+    isString(meta_description) &&
+    isString(post_body) &&
+    isNumber(publish_date) &&
+    isString(slug)
   );
 };
 

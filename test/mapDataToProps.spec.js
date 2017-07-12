@@ -2,6 +2,13 @@ import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
 
 describe('mapDataToProps', () => {
+  it('should return false if post data is invalid', () => {
+    const post = Object.assign({}, data);
+    delete post.html_title;
+
+    expect(mapDataToProps(post)).to.be.false;
+  });
+
   it('should transform HubSpot data to a marq structure', () => {
     const props = mapDataToProps(data);
 

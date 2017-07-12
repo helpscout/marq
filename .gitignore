@@ -5,3 +5,4 @@ coverage/
 node_modules/
 posts/
 test-dir/
+test-dir-empty/
