@@ -33,7 +33,8 @@
     "mocha-lcov-reporter": "1.3.0",
     "nyc": "10.3.2",
     "prettier": "1.5.2",
-    "rimraf": "2.6.1"
+    "rimraf": "2.6.1",
+    "sinon": "2.3.7"
   },
   "author": "ItsJonQ <itsjonq@gmail.com> (http://jonquach.com)",
   "license": "MIT",
