@@ -52,7 +52,7 @@ marq(config);
 #### template
 
 | Type | Description |
-| --- | --- | --- |
+| --- | --- |
 | `string` | Location of the markdown template for marq to use. |
 
 
