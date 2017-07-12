@@ -13,12 +13,14 @@
     "prepare": "npm run test && npm run build",
     "start": "npm run clean && npm run dev",
     "test": "npm run clean && npm run test:specs",
-    "test:specs": "mocha test/setup.mocha.js --recursive test/**/*.spec.js",
+    "test:specs": "mocha test/setup.mocha.js test --recursive",
     "test:watch": "npm run pretty && npm run test:specs -- --reporter=dot --watch"
   },
   "dependencies": {
     "lodash": "4.17.4",
-    "mkdirp": "0.5.1"
+    "mkdirp": "0.5.1",
+    "node-fetch": "1.7.1",
+    "query-string": "4.3.4"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
