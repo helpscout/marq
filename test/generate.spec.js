@@ -1,6 +1,6 @@
 import { readPost } from './helpers';
-import { generate, savePost } from '../generate';
-import mapDataToProps from '../mapDataToProps';
+import { generate, savePost } from '../src/generate';
+import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
 
 const posts = [data];

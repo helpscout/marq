@@ -1,4 +1,4 @@
-import mapDataToProps from '../mapDataToProps';
+import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
 
 describe('mapDataToProps', () => {

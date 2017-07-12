@@ -1,5 +1,5 @@
-import generatePost from '../generatePost';
-import mapDataToProps from '../mapDataToProps';
+import generatePost from '../src/generatePost';
+import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
 
 describe('generatePost', () => {

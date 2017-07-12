@@ -8,12 +8,12 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf coverage lib test-dir",
     "dev": "npm run test:watch",
-    "test:coverage": "nyc --reporter=html --reporter=text -- npm run test -- --reporter dot",
+    "test:coverage": "npm run clean && nyc --reporter=html --reporter=text -- npm run test:specs -- --reporter=dot",
     "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
     "prepare": "npm run test && npm run build",
     "start": "npm run clean && npm run dev",
     "test": "npm run clean && npm run test:specs",
-    "test:specs": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
+    "test:specs": "mocha test/setup.mocha.js --recursive test/**/*.spec.js",
     "test:watch": "npm run pretty && npm run test:specs -- --reporter=dot --watch"
   },
   "dependencies": {
@@ -33,5 +33,11 @@
     "rimraf": "2.6.1"
   },
   "author": "ItsJonQ <itsjonq@gmail.com> (http://jonquach.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "nyc": {
+    "exclude": [
+      "src/template/**/*.js",
+      "test/**/*.js"
+    ]
+  }
 }

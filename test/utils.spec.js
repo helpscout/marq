@@ -1,4 +1,4 @@
-import { getDate, getFileName, sanitize, slugify } from '../utils';
+import { getDate, getFileName, sanitize, slugify } from '../src/utils';
 
 describe('utils', () => {
   describe('getDate', () => {
