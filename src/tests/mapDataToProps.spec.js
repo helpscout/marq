@@ -2,7 +2,7 @@ import mapDataToProps from '../mapDataToProps';
 import data from './fixture/post';
 
 describe('mapDataToProps', () => {
-  it('should transform HubSpot data to a postdown structure', () => {
+  it('should transform HubSpot data to a marq structure', () => {
     const props = mapDataToProps(data);
 
     expect(props.id).to.equal(data.id);

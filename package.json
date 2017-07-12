@@ -1,5 +1,5 @@
 {
-  "name": "postdown",
+  "name": "marq",
   "version": "0.0.1",
   "description": "Generate markdown posts from API responses",
   "main": "/src/index.js",

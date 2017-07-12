@@ -58,12 +58,12 @@ const generatePosts = (data) => {
   });
 };
 
-const postdown = () => {
+const marq = () => {
   mkdir('./posts');
   return generatePosts(getData());
 }
 
-const posts = postdown();
+const posts = marq();
 
 console.log('');
 console.log('Ready for some 🌈 magic 🌈?');
@@ -73,11 +73,11 @@ posts.forEach(p => {
   const fileContent = p.fileContent;
 
   fs.writeFileSync(`./posts/${fileName}`, fileContent);
-  console.log(`./posts/${fileName} created with postdown!`);
+  console.log(`./posts/${fileName} created with marq!`);
 });
 console.log('');
-console.log('✨ POSTDOWN MAGIC MACHINE! ✨');
+console.log('✨ marq magic machine! ✨');
 console.log('');
 
-module.export = postdown;
-module.export.default = postdown;
+module.export = marq;
+module.export.default = marq;

@@ -1,4 +1,4 @@
-# Postdown [![Build Status](https://travis-ci.org/helpscout/postdown.svg?branch=master)](https://travis-ci.org/helpscout/postdown) [![Coverage Status](https://coveralls.io/repos/github/helpscout/postdown/badge.svg?branch=master)](https://coveralls.io/github/helpscout/postdown?branch=master)
+# marq [![Build Status](https://travis-ci.org/helpscout/marq.svg?branch=master)](https://travis-ci.org/helpscout/marq) [![Coverage Status](https://coveralls.io/repos/github/helpscout/marq/badge.svg?branch=master)](https://coveralls.io/github/helpscout/marq?branch=master)
 
 Generate markdown posts from JSON API responses!
 
@@ -26,7 +26,7 @@ npm start
 ```
 
 
-## Using Postdown
+## Using marq
 
 The module is still under development. The main file will be under `./src/index.js`.
 
