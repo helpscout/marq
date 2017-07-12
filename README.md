@@ -1,4 +1,4 @@
-# H2JK [![Build Status](https://travis-ci.org/helpscout/h2jk.svg?branch=master)](https://travis-ci.org/helpscout/h2jk) [![Coverage Status](https://coveralls.io/repos/github/helpscout/h2jk/badge.svg?branch=master)](https://coveralls.io/github/helpscout/h2jk?branch=master)
+# Postdown [![Build Status](https://travis-ci.org/helpscout/postdown.svg?branch=master)](https://travis-ci.org/helpscout/postdown) [![Coverage Status](https://coveralls.io/repos/github/helpscout/postdown/badge.svg?branch=master)](https://coveralls.io/github/helpscout/postdown?branch=master)
 
 #### HubSpot to Jekyll
 _Magical post machine_
@@ -27,7 +27,7 @@ npm start
 ```
 
 
-## Using H2JK
+## Using Postdown
 
 The module is still under development. The main file will be under `./src/index.js`.
 

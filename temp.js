@@ -58,12 +58,12 @@ const generatePosts = (data) => {
   });
 };
 
-const h2jk = () => {
+const postdown = () => {
   mkdir('./posts');
   return generatePosts(getData());
 }
 
-const posts = h2jk();
+const posts = postdown();
 
 console.log('');
 console.log('Ready for some 🌈 magic 🌈?');
@@ -73,11 +73,11 @@ posts.forEach(p => {
   const fileContent = p.fileContent;
 
   fs.writeFileSync(`./posts/${fileName}`, fileContent);
-  console.log(`./posts/${fileName} created with H2JK!`);
+  console.log(`./posts/${fileName} created with postdown!`);
 });
 console.log('');
-console.log('✨ H2JK MAGIC MACHINE! ✨');
+console.log('✨ POSTDOWN MAGIC MACHINE! ✨');
 console.log('');
 
-module.export = h2jk;
-module.export.default = h2jk;
+module.export = postdown;
+module.export.default = postdown;

@@ -1,7 +1,7 @@
 {
-  "name": "h2jk",
+  "name": "postdown",
   "version": "0.0.1",
-  "description": "HubSpot to Jekyll",
+  "description": "Generate markdown posts from API responses",
   "main": "/src/index.js",
   "scripts": {
     "build": "npm run clean && npm run pretty && babel src --out-dir lib",
