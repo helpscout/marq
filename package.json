@@ -11,10 +11,10 @@
     "test:coverage": "nyc --reporter=html --reporter=text -- npm run test -- --reporter dot",
     "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
     "prepare": "npm run test && npm run build",
-    "start": "npm run dev",
+    "start": "npm run clean && npm run dev",
     "test": "npm run clean && npm run test:specs",
     "test:specs": "mocha test/setup.mocha.js --recursive src/**/*.spec.js",
-    "test:watch": "npm run pretty && npm run test -- --watch --reporter dot"
+    "test:watch": "npm run pretty && npm run test:specs -- --reporter=dot --watch"
   },
   "dependencies": {
     "lodash": "4.17.4",
