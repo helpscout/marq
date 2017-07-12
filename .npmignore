@@ -1,0 +1,10 @@
+logs
+*.log
+
+posts/
+test/
+test-dir/
+
+node_modules
+coverage
+.nyc_output
