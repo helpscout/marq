@@ -9,28 +9,54 @@ Note: Currently only setup to do parsing on a static CURL return file.
 Not actually hitting HubSpot's API, **YET**!
 
 
-## Get Started
-
-Pull this down, then:
+## Install
 
 ```
-npm install
+npm install marq --save-dev
 ```
 
-## Start developing!
+## Basic Usage
 
-Run:
+**Note: These features aren't developed yet. Just writing down docs for future use**
 
+```js
+import marq from 'marq';
+
+const config = {
+  hubspot: {
+    key: 'demo',
+  },
+  dest: './_posts/',
+  template: './template.js',
+};
+
+marq(config);
 ```
-npm start
-```
+
+### Options
+
+#### hubspot
+
+| Type | Description |
+| --- | --- |
+| `object` | API credentials for Hubspot. |
 
 
-## Using marq
+#### dest
 
-The module is still under development. The main file will be under `./src/index.js`.
+| Type | Default | Description |
+| --- | --- | --- |
+| `string` | `./_posts` | Directory for marq to save posts in. |
 
 
-## API Stuff
+#### template
+
+| Type | Description |
+| --- | --- | --- |
+| `string` | Location of the markdown template for marq to use. |
+
+
+
+## API Notes
 
 Check out **[HubSpot's API docs](https://developers.hubspot.com/docs/methods/blogv2/get_blog_posts)**
