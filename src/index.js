@@ -13,3 +13,7 @@ const marq = (options = defaultOptions) => {
 };
 
 export default marq;
+
+module.exports = marq;
+// For ES2015 default import
+module.exports.default = marq;
