@@ -2,7 +2,7 @@
   "name": "marq",
   "version": "0.0.1",
   "description": "Generate markdown posts from API responses",
-  "main": "/src/index.js",
+  "main": "/lib/index.js",
   "scripts": {
     "build": "npm run clean && npm run pretty && babel src --out-dir lib",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
