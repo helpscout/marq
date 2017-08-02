@@ -1,17 +1,28 @@
-import { isString } from 'lodash';
+import { isObject, isString } from 'lodash';
 import savePost from './savePost';
+import template from './template/post.js';
 
-const defaultDir = './posts';
+const defaultOptions = {
+  dest: './posts',
+  template: template,
+};
 
-export const generate = (dir = defaultDir) => (posts = []) => {
-  if (!isString(dir)) return false;
+export const generate = (options = defaultOptions) => (posts = []) => {
+  if (!isObject(options)) return false;
+
+  const config = Object.assign({}, defaultOptions, options);
+  const dest = config.dest;
+  const template = config.template;
+
+  if (!isString(dest) || !isString(template)) return false;
+
   const saveQueue = [];
 
   posts.forEach(post => {
-    saveQueue.push(savePost(dir)(post));
+    saveQueue.push(savePost(options)(post));
   });
 
-  return Promise.all(saveQueue);
+  return Promise.all(saveQueue).catch(err => console.log(err));
 };
 
 export default generate;

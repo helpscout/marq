@@ -3,7 +3,10 @@ import savePost from '../src/savePost';
 import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
 
-const dir = './test-dir';
+const options = {
+  dest: './test-dir',
+  template: './template/post.js',
+};
 
 describe('savePost', () => {
   it("should return false if dir argument isn't valid", () => {
@@ -11,13 +14,13 @@ describe('savePost', () => {
   });
 
   it('should return false if post is invalid', () => {
-    expect(savePost(dir)({})).to.be.false;
-    expect(savePost(dir)()).to.be.false;
-    expect(savePost(dir)('postttttttttt')).to.be.false;
+    expect(savePost(options)({})).to.be.false;
+    expect(savePost(options)()).to.be.false;
+    expect(savePost(options)('postttttttttt')).to.be.false;
   });
 
   it('should resolve promise if post is valid', () => {
-    expect(savePost(dir)(data)).to.be.fulfilled;
+    expect(savePost(options)(data)).to.be.fulfilled;
   });
 
   it('should output .md file into default dir', done => {

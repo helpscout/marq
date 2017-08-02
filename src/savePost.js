@@ -1,22 +1,32 @@
 import fs from 'fs';
 import mkdir from 'mkdirp';
-import { isString } from 'lodash';
+import { isObject, isString } from 'lodash';
 import generatePost from './generatePost';
 import mapDataToProps from './mapDataToProps';
 import { isValidPost } from './utils';
+import template from './template/post.js';
 
-const defaultDir = './posts';
+const defaultOptions = {
+  dest: './posts',
+  template: template,
+};
 
-const savePost = (dir = defaultDir) => post => {
-  if (!isString(dir)) return false;
+const savePost = (options = defaultOptions) => post => {
+  if (!isObject(options)) return false;
   if (!isValidPost(post)) return false;
 
+  const config = Object.assign({}, defaultOptions, options);
+  const dest = config.dest;
+  const template = config.template;
+
+  if (!isString(dest) || !isString(template)) return false;
+
   const props = mapDataToProps(post);
-  const markdown = generatePost(props);
-  const filePath = `${dir}/${props.fileName}`;
+  const markdown = generatePost(template)(props);
+  const filePath = `${dest}/${props.fileName}`;
 
   return new Promise((resolve, reject) => {
-    mkdir(dir, err => {
+    mkdir(dest, err => {
       /* istanbul ignore next */
       // skipping testing for mkdir's promise reject
       if (err) return reject(err);

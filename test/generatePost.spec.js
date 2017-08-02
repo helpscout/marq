@@ -5,7 +5,7 @@ import data from './fixture/post';
 describe('generatePost', () => {
   it('should output a Jekyll post (string) from data', () => {
     const props = mapDataToProps(data);
-    const post = generatePost(props);
+    const post = generatePost()(props);
 
     expect(post).to.contain('title: "HTML: Title"');
     expect(post).to.contain('date: "2016-12-16"');
