@@ -9,14 +9,22 @@ const options = {
 };
 
 describe('savePost', () => {
-  it("should return false if dir argument isn't valid", () => {
-    expect(savePost(123)(data)).to.be.false;
+  it("should be rejected if dir argument isn't valid", () => {
+    expect(savePost(123)(data)).to.be.rejected;
   });
 
-  it('should return false if post is invalid', () => {
-    expect(savePost(options)({})).to.be.false;
-    expect(savePost(options)()).to.be.false;
-    expect(savePost(options)('postttttttttt')).to.be.false;
+  it('should be rejected if post is invalid', () => {
+    expect(savePost(options)({})).to.be.rejected;
+    expect(savePost(options)()).to.be.rejected;
+    expect(savePost(options)('postttttttttt')).to.be.rejected;
+  });
+
+  it('should be rejected if options is invalid', () => {
+    const badOptions = {
+      dest: options.dest,
+      template: 123,
+    };
+    expect(savePost(badOptions)(data)).to.be.rejected;
   });
 
   it('should resolve promise if post is valid', () => {

@@ -12,20 +12,25 @@ const defaultOptions = {
 };
 
 const savePost = (options = defaultOptions) => post => {
-  if (!isObject(options)) return false;
-  if (!isValidPost(post)) return false;
-
-  const config = Object.assign({}, defaultOptions, options);
-  const dest = config.dest;
-  const template = config.template;
-
-  if (!isString(dest) || !isString(template)) return false;
-
-  const props = mapDataToProps(post);
-  const markdown = generatePost(template)(props);
-  const filePath = `${dest}/${props.marq.fileName}`;
-
   return new Promise((resolve, reject) => {
+    if (!isObject(options)) {
+      reject('marq: Options needs to be an object');
+    }
+    if (!isValidPost(post)) {
+      reject("marq: Hmm… This post doesn't appear to be correct.");
+    }
+
+    const config = Object.assign({}, defaultOptions, options);
+    const dest = config.dest;
+    const template = config.template;
+
+    if (!isString(dest) || !isString(template)) {
+      reject("marq: Hmm… Looks like something's up with the configuration.");
+    }
+
+    const props = mapDataToProps(post);
+    const markdown = generatePost(template)(props);
+    const filePath = `${dest}/${props.marq.fileName}`;
     mkdir(dest, err => {
       /* istanbul ignore next */
       // skipping testing for mkdir's promise reject

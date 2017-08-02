@@ -28,4 +28,23 @@ describe('mapDataToProps', () => {
     expect(props.marq.front_matter.title).to.exist;
     expect(props.marq.front_matter.description).to.exist;
   });
+
+  it('should provide featuredImage data if applicable', () => {
+    const newData = Object.assign({}, data, {
+      featured_image: 'yes.png',
+      featured_image_alt_text: 'yes',
+    });
+
+    const props = mapDataToProps(newData);
+
+    expect(props.marq.featuredImage).to.exist;
+    expect(props.marq.featuredImage.src).to.equal('yes.png');
+    expect(props.marq.featuredImage.alt).to.equal('yes');
+  });
+
+  it('should not provide featuredImage object if undefined', () => {
+    const props = mapDataToProps(data);
+
+    expect(props.marq.featuredImage).to.equal(null);
+  });
 });

@@ -22,7 +22,11 @@ export const generate = (options = defaultOptions) => (posts = []) => {
     saveQueue.push(savePost(options)(post));
   });
 
-  return Promise.all(saveQueue).catch(err => console.log(err));
+  return (
+    Promise.all(saveQueue)
+      /* istanbul ignore next */
+      .catch(err => err)
+  );
 };
 
 export default generate;

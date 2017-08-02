@@ -12,4 +12,11 @@ describe('generatePost', () => {
     expect(post).to.contain('slug: "awesome-post"');
     expect(post).to.contain(props.marq.content);
   });
+
+  it('should return false if template is invalid', () => {
+    const props = mapDataToProps(data);
+    const post = generatePost(1)(props);
+
+    expect(post).to.be.false;
+  });
 });

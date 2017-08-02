@@ -11,7 +11,13 @@ const options = {
 
 describe('generate', () => {
   it("should return false if dir argument isn't valid", () => {
+    const badOptions = {
+      dest: '',
+      template: 123,
+    };
+
     expect(generate(123)(posts)).to.be.false;
+    expect(generate(badOptions)(posts)).to.be.false;
   });
 
   it('should resolve promise if posts are valid', () => {
@@ -130,5 +136,12 @@ describe('generate', () => {
       .catch(err => {
         done(err);
       });
+  });
+
+  it('should error out if post is invalid', done => {
+    generate(options)([{ bad: true }]).then(err => {
+      expect(err).to.contain('marq');
+      done();
+    });
   });
 });
