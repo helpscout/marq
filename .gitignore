@@ -1,6 +1,8 @@
 .DS_Store
 .nyc_output/
+es/
 lib/
+dist/
 coverage/
 node_modules/
 posts/
