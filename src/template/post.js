@@ -1,11 +1,11 @@
 const template = `---
-title: "<%= front_matter.title %>"
-description: "<%= front_matter.description %>"
-date: "<%= date %>"
-slug: "<%= slug %>"
+title: "<%= marq.front_matter.title %>"
+description: "<%= marq.front_matter.description %>"
+date: "<%= marq.date %>"
+slug: "<%= marq.slug %>"
 ---
 
-<%= content %>
+<%= marq.content %>
 `;
 
 export default template;

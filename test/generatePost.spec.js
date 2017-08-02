@@ -10,6 +10,6 @@ describe('generatePost', () => {
     expect(post).to.contain('title: "HTML: Title"');
     expect(post).to.contain('date: "2016-12-16"');
     expect(post).to.contain('slug: "awesome-post"');
-    expect(post).to.contain(props.content);
+    expect(post).to.contain(props.marq.content);
   });
 });

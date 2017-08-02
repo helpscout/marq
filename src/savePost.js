@@ -23,7 +23,7 @@ const savePost = (options = defaultOptions) => post => {
 
   const props = mapDataToProps(post);
   const markdown = generatePost(template)(props);
-  const filePath = `${dest}/${props.fileName}`;
+  const filePath = `${dest}/${props.marq.fileName}`;
 
   return new Promise((resolve, reject) => {
     mkdir(dest, err => {

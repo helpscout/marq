@@ -12,23 +12,20 @@ describe('mapDataToProps', () => {
   it('should transform HubSpot data to a marq structure', () => {
     const props = mapDataToProps(data);
 
-    expect(props.id).to.equal(data.id);
-    expect(props.title).to.equal(data.html_title);
-    expect(props.date).to.equal('2016-12-16');
-    expect(props.author.id).to.equal(data.author_user_id);
-    expect(props.author.username).to.equal(data.author_username);
-    expect(props.author.name).to.equal(data.author_name);
-    expect(props.description).to.equal(data.meta_description);
-    expect(props.content).to.equal(data.post_body);
-    expect(props.slug).to.equal('awesome-post');
-    expect(props.fileName).to.equal('2016-12-16-awesome-post.md');
+    expect(props.marq.id).to.equal(data.id);
+    expect(props.marq.title).to.equal(data.html_title);
+    expect(props.marq.date).to.equal('2016-12-16');
+    expect(props.marq.description).to.equal(data.meta_description);
+    expect(props.marq.content).to.equal(data.post_body);
+    expect(props.marq.slug).to.equal('awesome-post');
+    expect(props.marq.fileName).to.equal('2016-12-16-awesome-post.md');
   });
 
   it('should have front-matter sanitized content', () => {
     const props = mapDataToProps(data);
 
-    expect(props.front_matter).to.exist;
-    expect(props.front_matter.title).to.exist;
-    expect(props.front_matter.description).to.exist;
+    expect(props.marq.front_matter).to.exist;
+    expect(props.marq.front_matter.title).to.exist;
+    expect(props.marq.front_matter.description).to.exist;
   });
 });

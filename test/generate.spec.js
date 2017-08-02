@@ -27,9 +27,9 @@ describe('generate', () => {
         expect(post).to.exist;
         expect(post).to.be.a('string');
 
-        expect(post).to.contain(postProps.front_matter.title);
-        expect(post).to.contain(postProps.front_matter.description);
-        expect(post).to.contain(postProps.content);
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
 
         done();
       })
@@ -51,9 +51,9 @@ describe('generate', () => {
         expect(post).to.exist;
         expect(post).to.be.a('string');
 
-        expect(post).to.contain(postProps.front_matter.title);
-        expect(post).to.contain(postProps.front_matter.description);
-        expect(post).to.contain(postProps.content);
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
         expect(post).to.contain('custom');
 
         done();
@@ -87,9 +87,9 @@ describe('generate', () => {
         expect(post).to.exist;
         expect(post).to.be.a('string');
 
-        expect(post).to.contain(postProps.front_matter.title);
-        expect(post).to.contain(postProps.front_matter.description);
-        expect(post).to.contain(postProps.content);
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
 
         done();
       })
@@ -116,9 +116,9 @@ describe('generate', () => {
             expect(post).to.exist;
             expect(post).to.be.a('string');
 
-            expect(post).to.contain(postProps.front_matter.title);
-            expect(post).to.contain(postProps.front_matter.description);
-            expect(post).to.contain(postProps.content);
+            expect(post).to.contain(postProps.marq.front_matter.title);
+            expect(post).to.contain(postProps.marq.front_matter.description);
+            expect(post).to.contain(postProps.marq.content);
             expect(post).to.contain(newTitle);
 
             done();

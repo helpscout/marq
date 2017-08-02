@@ -6,7 +6,6 @@ const defaultOptions = {};
 
 const marq = (options = defaultOptions) => {
   const config = remapOptions(options);
-  // Todo: Actually parse options into arguments for the functions below
   return new Promise((resolve, reject) => {
     getPosts(config.query)
       .then(posts => {
@@ -16,7 +15,7 @@ const marq = (options = defaultOptions) => {
         };
         generate(o)(posts)
           .then(r => {
-            console.log(`marq generated ${r.length} posts into ./posts`);
+            console.log(`marq generated ${r.length} posts into ${config.dest}`);
             return resolve(r);
           })
           .catch(err => {

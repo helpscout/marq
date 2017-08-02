@@ -11,16 +11,21 @@ const mapDataToProps = data => {
   const title = data.html_title;
   const description = data.meta_description;
 
-  return {
+  const featuredImage = data.featured_image
+    ? {
+        src: data.featured_image,
+        alt: data.featured_image_alt_text,
+        height: data.featured_image_height,
+        width: data.featured_image_width,
+      }
+    : null;
+
+  const marqData = {
     id: data.id,
     date: publishDate,
-    author: {
-      id: data.author_user_id,
-      username: data.author_username,
-      name: data.author_name,
-    },
     content: data.post_body,
     fileName: getFileName(publishDate, slug),
+    featuredImage,
     title,
     description,
     slug,
@@ -29,6 +34,10 @@ const mapDataToProps = data => {
       description: sanitize(description),
     },
   };
+
+  data.marq = marqData;
+
+  return data;
 };
 
 export default mapDataToProps;
