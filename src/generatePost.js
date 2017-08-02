@@ -1,8 +1,12 @@
-import { template } from 'lodash';
-import postTemplate from './template/post';
+import { isString, template } from 'lodash';
+import defaultPostTemplate from './template/post';
 
-const generatePost = data => {
-  return template(postTemplate)(data);
+const generatePost = (postTemplate = defaultPostTemplate) => {
+  return data => {
+    if (!isString(postTemplate)) return false;
+
+    return template(postTemplate)(data);
+  };
 };
 
 export default generatePost;

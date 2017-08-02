@@ -7,7 +7,7 @@ const post = {
   author_user: 'Ms. Author',
   meta_description: 'This is so meta',
   post_body: '<strong>Super meta!</strong>',
-  slug: 'awesome-post!!!!!!',
+  slug: '/blog/awesome-post!!!!!!',
 };
 
 export default post;

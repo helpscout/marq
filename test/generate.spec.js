@@ -2,17 +2,26 @@ import { readPost, dirExists } from './helpers';
 import generate from '../src/generate';
 import mapDataToProps from '../src/mapDataToProps';
 import data from './fixture/post';
+import customTemplate from './template/custom-post';
 
 const posts = [data];
-const dir = './test-dir';
+const options = {
+  dest: './test-dir',
+};
 
 describe('generate', () => {
   it("should return false if dir argument isn't valid", () => {
+    const badOptions = {
+      dest: '',
+      template: 123,
+    };
+
     expect(generate(123)(posts)).to.be.false;
+    expect(generate(badOptions)(posts)).to.be.false;
   });
 
   it('should resolve promise if posts are valid', () => {
-    expect(generate(dir)(posts)).to.be.fulfilled;
+    expect(generate(options)(posts)).to.be.fulfilled;
   });
 
   it('should output .md file into default dir', done => {
@@ -24,9 +33,34 @@ describe('generate', () => {
         expect(post).to.exist;
         expect(post).to.be.a('string');
 
-        expect(post).to.contain(postProps.front_matter.title);
-        expect(post).to.contain(postProps.front_matter.description);
-        expect(post).to.contain(postProps.content);
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
+
+        done();
+      })
+      .catch(err => {
+        done(err);
+      });
+  });
+
+  it('should output .md file into custom dir', done => {
+    const customOptions = {
+      dest: './test-dir/super/deep/custom/dir',
+      template: customTemplate,
+    };
+    generate(customOptions)(posts)
+      .then(() => {
+        const postProps = mapDataToProps(posts[0]);
+        const post = readPost(customOptions.dest)(postProps);
+
+        expect(post).to.exist;
+        expect(post).to.be.a('string');
+
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
+        expect(post).to.contain('custom');
 
         done();
       })
@@ -36,9 +70,13 @@ describe('generate', () => {
   });
 
   it('should not write any .md files if posts arg is empty', done => {
-    generate('./test-dir-empty')()
+    const customOptions = {
+      dest: './test-dir-empty',
+      template: './template/post.js',
+    };
+    generate(customOptions)()
       .then(() => {
-        expect(dirExists('./test-dir-empty')).to.be.false;
+        expect(dirExists(customOptions.dest)).to.be.false;
         done();
       })
       .catch(err => {
@@ -47,17 +85,17 @@ describe('generate', () => {
   });
 
   it('should output .md file from a post', done => {
-    generate(dir)(posts)
+    generate(options)(posts)
       .then(() => {
         const postProps = mapDataToProps(posts[0]);
-        const post = readPost(dir)(postProps);
+        const post = readPost(options.dest)(postProps);
 
         expect(post).to.exist;
         expect(post).to.be.a('string');
 
-        expect(post).to.contain(postProps.front_matter.title);
-        expect(post).to.contain(postProps.front_matter.description);
-        expect(post).to.contain(postProps.content);
+        expect(post).to.contain(postProps.marq.front_matter.title);
+        expect(post).to.contain(postProps.marq.front_matter.description);
+        expect(post).to.contain(postProps.marq.content);
 
         done();
       })
@@ -67,25 +105,26 @@ describe('generate', () => {
   });
 
   it('should overwrite existing .md post', done => {
-    generate(dir)(posts)
+    generate(options)(posts)
       .then(() => {
         // Regenerate, but with new post
         const newTitle = 'NEWTITLE. OMG!!!';
         const newPost = Object.assign({}, data, {
           html_title: newTitle,
+          slug: 'new-slug',
         });
 
-        generate(dir)([newPost])
-          .then(postData => {
+        generate(options)([newPost])
+          .then(() => {
             const postProps = mapDataToProps(newPost);
-            const post = readPost(dir)(postProps);
+            const post = readPost(options.dest)(postProps);
 
             expect(post).to.exist;
             expect(post).to.be.a('string');
 
-            expect(post).to.contain(postProps.front_matter.title);
-            expect(post).to.contain(postProps.front_matter.description);
-            expect(post).to.contain(postProps.content);
+            expect(post).to.contain(postProps.marq.front_matter.title);
+            expect(post).to.contain(postProps.marq.front_matter.description);
+            expect(post).to.contain(postProps.marq.content);
             expect(post).to.contain(newTitle);
 
             done();
@@ -97,5 +136,12 @@ describe('generate', () => {
       .catch(err => {
         done(err);
       });
+  });
+
+  it('should error out if post is invalid', done => {
+    generate(options)([{ bad: true }]).then(err => {
+      expect(err).to.contain('marq');
+      done();
+    });
   });
 });
