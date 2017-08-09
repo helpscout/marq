@@ -52,12 +52,14 @@ describe('savePost', () => {
   });
 
   it('should remap post data if callback fn is defined', () => {
-    const remapPostData = (data) => {
+    const remapPostData = data => {
       return Object.assign({}, data, {
         customData: true,
       });
     };
 
-    expect(savePost(options)(data, remapPostData)).to.eventually.have.property('customData');
+    expect(savePost(options)(data, remapPostData)).to.eventually.have.property(
+      'customData'
+    );
   });
 });
