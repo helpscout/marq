@@ -4,7 +4,7 @@ import remapOptions from './utils/remapOptions';
 
 const defaultOptions = {};
 
-const marq = (options = defaultOptions) => {
+const marq = (options = defaultOptions, remapPostData) => {
   const config = remapOptions(options);
   return new Promise((resolve, reject) => {
     getPosts(config.query)
@@ -13,7 +13,7 @@ const marq = (options = defaultOptions) => {
           dest: config.dest,
           template: config.template,
         };
-        generate(o)(posts)
+        generate(o, remapPostData)(posts)
           .then(r => {
             console.log(`marq generated ${r.length} posts into ${config.dest}`);
             return resolve(r);
