@@ -7,7 +7,9 @@ const defaultOptions = {
   template: template,
 };
 
-export const generate = (options = defaultOptions) => (posts = []) => {
+export const generate = (options = defaultOptions, remapPostData) => (
+  posts = []
+) => {
   if (!isObject(options)) return false;
 
   const config = Object.assign({}, defaultOptions, options);
@@ -19,7 +21,7 @@ export const generate = (options = defaultOptions) => (posts = []) => {
   const saveQueue = [];
 
   posts.forEach(post => {
-    saveQueue.push(savePost(options)(post));
+    saveQueue.push(savePost(options)(post, remapPostData));
   });
 
   return (

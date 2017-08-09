@@ -17,8 +17,6 @@ npm install marq --save-dev
 
 ## Basic Usage
 
-**Note: These features aren't developed yet. Just writing down docs for future use**
-
 ```js
 import marq from 'marq';
 
@@ -27,10 +25,16 @@ const config = {
     key: 'demo',
   },
   dest: './_posts/',
-  template: './template.js',
+  template: require('./my-template'),
 };
 
-marq(config);
+const remapPostData = (post) => {
+  return Object.assign({}, post, {
+    customData: 'MAGIC'
+  });
+};
+
+marq(config, remapPostData);
 ```
 
 ### Options
@@ -53,7 +57,15 @@ marq(config);
 
 | Type | Description |
 | --- | --- |
-| `string` | Location of the markdown template for marq to use. |
+| `string` | Lodash compatible template for marq to use. |
+
+
+#### remapPostData
+
+| Type | Description |
+| --- | --- |
+| `function` | Callback function to adjust the template post data. |
+
 
 
 
