@@ -6,7 +6,7 @@ const remapOptions = (options = {}) => {
   if (!isObject(options)) return output
   if (!has(options, 'hubspot')) return output
 
-  const { hubspot, dest, template } = options
+  const { hubspot, dest, template, ...rest } = options
 
   const hapikey = hubspot.key
   const content_group_id = hubspot.blogId
@@ -22,7 +22,7 @@ const remapOptions = (options = {}) => {
     template: template ? template : defaultTemplate
   }
 
-  return output
+  return Object.assign({}, output, rest)
 }
 
 export default remapOptions

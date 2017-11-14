@@ -2,20 +2,33 @@ import generate from './generate'
 import getPosts from './getPosts'
 import remapOptions from './utils/remapOptions'
 
-const defaultOptions = {}
+const defaultOptions = {
+  logWhenComplete: true,
+  beforeGenerate: posts => posts,
+  remapPostData: props => props
+}
 
-const marq = (options = defaultOptions, remapPostData) => {
-  const config = remapOptions(options)
+const marq = (options = defaultOptions) => {
+  const config = Object.assign({}, defaultOptions, remapOptions(options))
+  const {
+    beforeGenerate,
+    dest,
+    query,
+    logWhenComplete,
+    remapPostData,
+    template
+  } = config
+
   return new Promise((resolve, reject) => {
-    getPosts(config.query)
+    getPosts(query)
       .then(posts => {
-        const o = {
-          dest: config.dest,
-          template: config.template
-        }
-        generate(o, remapPostData)(posts)
+        const postData = beforeGenerate(posts)
+
+        generate({ dest, template }, remapPostData)(postData)
           .then(r => {
-            console.log(`marq generated ${r.length} posts into ${config.dest}`)
+            if (logWhenComplete) {
+              console.log(`marq generated ${r.length} posts into ${config.dest}`)
+            }
             return resolve(r)
           })
           .catch(err => {
