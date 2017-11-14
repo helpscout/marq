@@ -1,5 +1,5 @@
 const sanitize = text => {
-  return text.toString().replace(/\"/g, '"');
-};
+  return text.toString().replace(/\"/g, '"')
+}
 
-export default sanitize;
+export default sanitize

@@ -1,34 +1,34 @@
-import { isObject, isString } from 'lodash';
-import savePost from './savePost';
-import template from './template/post.js';
+import { isObject, isString } from 'lodash'
+import savePost from './savePost'
+import template from './template/post.js'
 
 const defaultOptions = {
   dest: './posts',
-  template: template,
-};
+  template: template
+}
 
 export const generate = (options = defaultOptions, remapPostData) => (
   posts = []
 ) => {
-  if (!isObject(options)) return false;
+  if (!isObject(options)) return false
 
-  const config = Object.assign({}, defaultOptions, options);
-  const dest = config.dest;
-  const template = config.template;
+  const config = Object.assign({}, defaultOptions, options)
+  const dest = config.dest
+  const template = config.template
 
-  if (!isString(dest) || !isString(template)) return false;
+  if (!isString(dest) || !isString(template)) return false
 
-  const saveQueue = [];
+  const saveQueue = []
 
   posts.forEach(post => {
-    saveQueue.push(savePost(options)(post, remapPostData));
-  });
+    saveQueue.push(savePost(options)(post, remapPostData))
+  })
 
   return (
     Promise.all(saveQueue)
       /* istanbul ignore next */
       .catch(err => err)
-  );
-};
+  )
+}
 
-export default generate;
+export default generate

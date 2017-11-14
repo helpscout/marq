@@ -7,6 +7,6 @@ custom: "yup"
 ---
 
 <%= marq.content %>
-`;
+`
 
-export default template;
+export default template

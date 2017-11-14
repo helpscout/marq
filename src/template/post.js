@@ -6,6 +6,6 @@ slug: "<%= marq.slug %>"
 ---
 
 <%= marq.content %>
-`;
+`
 
-export default template;
+export default template

@@ -13,7 +13,7 @@
     "clean": "rimraf coverage lib test-dir posts test-dir-empty",
     "dev": "npm run test:watch",
     "test:coverage": "npm run clean && nyc --reporter=html --reporter=text -- npm run test:specs -- --reporter=dot",
-    "pretty": "prettier '{src,test}/**/*.js' --single-quote --trailing-comma es5 --write",
+    "pretty": "prettier '{src,test}/**/*.js' --no-semi --single-quote --trailing-comma none  --write",
     "prepare": "npm run test && npm run build",
     "start": "npm run clean && npm run dev",
     "test": "npm run clean && npm run test:specs",
