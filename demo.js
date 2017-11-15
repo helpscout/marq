@@ -1,9 +1,9 @@
 import marq from './src/index';
 
 // DEEETZ!
-const hubspotDeets = {
-  hapikey: 'secretz',
-  content_group_id: 'moar_secretz',
+const config = {
+  key: 'secretz',
+  blogId: 'moar_secretz',
 };
 
 // DROP DA DEEETZ!

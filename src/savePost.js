@@ -24,9 +24,11 @@ const savePost = (options = defaultOptions) => (post, remapPostData) => {
     const dest = config.dest
     const template = config.template
 
-    if (!isString(dest) || !isString(template)) {
+    if ((!isString(dest) && !isFunction(dest)) || !isString(template)) {
       reject("marq: Hmm… Looks like something's up with the configuration.")
     }
+
+    const fileDest = isFunction(dest) ? dest() : dest
 
     let props = mapDataToProps(post)
     if (remapPostData && isFunction(remapPostData)) {
@@ -34,8 +36,8 @@ const savePost = (options = defaultOptions) => (post, remapPostData) => {
     }
 
     const markdown = generatePost(template)(props)
-    const filePath = `${dest}/${props.marq.fileName}`
-    mkdir(dest, err => {
+    const filePath = `${fileDest}/${props.marq.fileName}`
+    mkdir(fileDest, err => {
       /* istanbul ignore next */
       // skipping testing for mkdir's promise reject
       if (err) return reject(err)

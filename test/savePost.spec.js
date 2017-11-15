@@ -51,6 +51,30 @@ describe('savePost', () => {
       })
   })
 
+  it('should output .md file into dir, with a dest() function', done => {
+    const options = {
+      dest: () => './test-dir',
+      template: './template/post.js'
+    }
+    savePost(options)(data)
+      .then(() => {
+        const postProps = mapDataToProps(data)
+        const post = readPost('./posts')(postProps)
+
+        expect(post).to.exist
+        expect(post).to.be.a('string')
+
+        expect(post).to.contain(postProps.marq.front_matter.title)
+        expect(post).to.contain(postProps.marq.front_matter.description)
+        expect(post).to.contain(postProps.marq.content)
+
+        done()
+      })
+      .catch(err => {
+        done(err)
+      })
+  })
+
   it('should remap post data if callback fn is defined', () => {
     const remapPostData = data => {
       return Object.assign({}, data, {

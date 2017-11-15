@@ -20,6 +20,19 @@ describe('generate', () => {
     expect(generate(badOptions)(posts)).to.be.false
   })
 
+  it('should not resolve promise if options.dest is valid, but options.template is not', () => {
+    const badOptions = {
+      dest: () => './test-dir',
+      template: () => 123
+    }
+    expect(generate(badOptions)(posts)).to.be.false
+  })
+
+  it('should resolve promise if options.dest is valid', () => {
+    expect(generate({ dest: './test-dir' })(posts)).to.be.fulfilled
+    expect(generate({ dest: () => './test-dir' })(posts)).to.be.fulfilled
+  })
+
   it('should resolve promise if posts are valid', () => {
     expect(generate(options)(posts)).to.be.fulfilled
   })
