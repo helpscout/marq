@@ -9,7 +9,7 @@ const defaultOptions = {
   remapPostData: /* istanbul ignore next */ props => props
 }
 
-const marq = (options) => {
+const marq = options => {
   if (!isPlainObject(options)) return false
 
   const config = Object.assign({}, defaultOptions, remapOptions(options))

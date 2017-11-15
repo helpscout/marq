@@ -10,7 +10,7 @@ const options = {
 }
 
 describe('generate', () => {
-  it('should return false if dir argument isn\'t valid', () => {
+  it("should return false if dir argument isn't valid", () => {
     const badOptions = {
       dest: '',
       template: 123
