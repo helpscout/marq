@@ -1,4 +1,4 @@
-import { isObject, isString } from 'lodash'
+import { isFunction, isObject, isString } from 'lodash'
 import savePost from './savePost'
 import template from './template/post.js'
 
@@ -16,7 +16,8 @@ export const generate = (options = defaultOptions, remapPostData) => (
   const dest = config.dest
   const template = config.template
 
-  if (!isString(dest) || !isString(template)) return false
+  if ((!isString(dest) && !isFunction(dest)) || !isString(template))
+    return false
 
   const saveQueue = []
 

@@ -18,8 +18,7 @@ const getPosts = params => {
     }
 
     const defaultParams = {
-      archived: false,
-      state: 'PUBLISHED'
+      archived: false
     }
     const url = getEndpointUrl(
       endpoints.hubspot,
