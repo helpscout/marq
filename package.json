@@ -18,6 +18,7 @@
     "release:patch": "np patch --no-yarn",
     "release:minor": "np minor --no-yarn",
     "release:major": "np major --no-yarn",
+    "release": "npm run release:patch",
     "start": "npm run clean && npm run dev",
     "test": "npm run clean && npm run test:specs",
     "test:specs": "mocha test/setup.mocha.js test --recursive",
