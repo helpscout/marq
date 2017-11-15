@@ -32,9 +32,7 @@ const marq = options => {
         generate({ dest, template }, remapPostData)(postData)
           .then(r => {
             if (logWhenComplete) {
-              console.log(
-                `marq generated ${r.length} posts`
-              )
+              console.log(`marq generated ${r.length} posts`)
             }
             return resolve(r)
           })
