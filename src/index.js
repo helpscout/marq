@@ -33,7 +33,7 @@ const marq = options => {
           .then(r => {
             if (logWhenComplete) {
               console.log(
-                `marq generated ${r.length} posts into ${config.dest}`
+                `marq generated ${r.length} posts`
               )
             }
             return resolve(r)
