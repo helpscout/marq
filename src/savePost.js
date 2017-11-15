@@ -28,15 +28,16 @@ const savePost = (options = defaultOptions) => (post, remapPostData) => {
       reject("marq: Hmm… Looks like something's up with the configuration.")
     }
 
-    const fileDest = isFunction(dest) ? dest() : dest
 
     let props = mapDataToProps(post)
     if (remapPostData && isFunction(remapPostData)) {
       props = remapPostData(props)
     }
-
     const markdown = generatePost(template)(props)
+
+    const fileDest = isFunction(dest) ? dest(props) : dest
     const filePath = `${fileDest}/${props.marq.fileName}`
+
     mkdir(fileDest, err => {
       /* istanbul ignore next */
       // skipping testing for mkdir's promise reject
