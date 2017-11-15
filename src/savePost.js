@@ -28,7 +28,6 @@ const savePost = (options = defaultOptions) => (post, remapPostData) => {
       reject("marq: Hmm… Looks like something's up with the configuration.")
     }
 
-
     let props = mapDataToProps(post)
     if (remapPostData && isFunction(remapPostData)) {
       props = remapPostData(props)
