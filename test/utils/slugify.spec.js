@@ -37,5 +37,11 @@ describe('utils', () => {
 
       expect(o).to.equal('hello-there')
     })
+
+    it('should replace slashes with hyphens', () => {
+      const o = slugify('/hello/there//friend//')
+
+      expect(o).to.equal('hello-there-friend')
+    })
   })
 })

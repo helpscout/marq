@@ -11,4 +11,10 @@ describe('getFileName', () => {
 
     expect(fileName).to.equal('2011-01-01-hello.md')
   })
+
+  it('should correctly handle slugs with multiple slashes', () => {
+    const fileName = getFileName('2011-01-01', '/blog/category/year/month/day/post-name/page-2')
+
+    expect(fileName).to.equal('2011-01-01-category-year-month-day-post-name-page-2.md')
+  })
 })
