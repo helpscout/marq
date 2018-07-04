@@ -25,14 +25,14 @@
     "test:watch": "npm run pretty && npm run test:specs -- --reporter=dot --watch"
   },
   "dependencies": {
-    "lodash": "4.17.4",
+    "lodash": "4.17.10",
     "mkdirp": "0.5.1",
     "node-fetch": "1.7.1",
     "query-string": "4.3.4"
   },
   "devDependencies": {
-    "babel-cli": "6.24.1",
-    "babel-core": "6.24.1",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-stage-1": "6.24.1",
